@@ -23,9 +23,15 @@ namespace AIWolf.Lib
     [DataContract]
     public class Vote : IEquatable<Vote>
     {
+#if JHELP
+        /// <summary>
+        /// 定数Vote.Empty
+        /// </summary>
+#else
         /// <summary>
         /// Constant Vote.Empty.
         /// </summary>
+#endif
         public static readonly Vote Empty = new Vote(-1, Agent.NONE, Agent.NONE);
 
         /// <summary>
@@ -117,17 +123,51 @@ namespace AIWolf.Lib
             Target = Agent.GetAgent(target);
         }
 
+        /// <inheritdoc />
         public override string ToString() => $"{Agent}voted{Target}@{Day}";
 
+        /// <inheritdoc />
         public bool Equals(Vote other) => other != null && (ReferenceEquals(this, other)
             || GetType() == other.GetType() && other.Day == Day && other.Agent == Agent && other.Target == Target);
 
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is Vote vote && Equals(vote);
 
+        /// <inheritdoc />
         public override int GetHashCode() => (Day, Agent, Target).GetHashCode();
 
+#if JHELP
+        /// <summary>
+        /// 等値演算子
+        /// </summary>
+        /// <param name="lhs">左辺</param>
+        /// <param name="rhs">右辺</param>
+        /// <returns>オペランドが等しい場合trueを返す</returns>
+#else
+        /// <summary>
+        /// Equality operator.
+        /// </summary>
+        /// <param name="lhs">Left hand side.</param>
+        /// <param name="rhs">Right hand side.</param>
+        /// <returns>true if its oprands are equal.</returns>
+#endif
         public static bool operator ==(Vote lhs, Vote rhs) => ((object)lhs) == null || ((object)rhs) == null ? Equals(lhs, rhs) : lhs.Equals(rhs);
 
+#if JHELP
+        /// <summary>
+        /// 非等値演算子
+        /// </summary>
+        /// <param name="lhs">左辺</param>
+        /// <param name="rhs">右辺</param>
+        /// <returns>オペランドが等しくない場合trueを返す</returns>
+#else
+        /// <summary>
+        /// Inequality operator.
+        /// </summary>
+        /// <param name="lhs">Left hand side.</param>
+        /// <param name="rhs">Right hand side.</param>
+        /// <returns>true if its oprands are not equal.</returns>
+#endif
         public static bool operator !=(Vote lhs, Vote rhs) => !(lhs == rhs);
 
     }

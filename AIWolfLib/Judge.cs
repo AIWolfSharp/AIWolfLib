@@ -23,9 +23,15 @@ namespace AIWolf.Lib
     [DataContract]
     public class Judge : IEquatable<Judge>
     {
+#if JHELP
+        /// <summary>
+        /// 定数Judge.Empty
+        /// </summary>
+#else
         /// <summary>
         /// Constant Judge.Empty.
         /// </summary>
+#endif
         public static readonly Judge Empty = new Judge(-1, Agent.NONE, Agent.NONE, Species.UNC);
 
         /// <summary>
@@ -141,17 +147,51 @@ namespace AIWolf.Lib
             Result = (Species)Enum.Parse(typeof(Species), result);
         }
 
+        /// <inheritdoc />
         public override string ToString() => $"{Agent}->{Target}@{Day}:{Result}";
 
+        /// <inheritdoc />
         public bool Equals(Judge other) => other != null && (ReferenceEquals(this, other) || GetType() == other.GetType()
                 && other.Day == Day && other.Agent == Agent && other.Target == Target && other.Result == Result);
 
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is Judge judge && Equals(judge);
 
+        /// <inheritdoc />
         public override int GetHashCode() => (Day, Agent, Target, Result).GetHashCode();
 
+#if JHELP
+        /// <summary>
+        /// 等値演算子
+        /// </summary>
+        /// <param name="lhs">左辺</param>
+        /// <param name="rhs">右辺</param>
+        /// <returns>オペランドが等しい場合trueを返す</returns>
+#else
+        /// <summary>
+        /// Equality operator.
+        /// </summary>
+        /// <param name="lhs">Left hand side.</param>
+        /// <param name="rhs">Right hand side.</param>
+        /// <returns>true if its oprands are equal.</returns>
+#endif
         public static bool operator ==(Judge lhs, Judge rhs) => ((object)lhs) == null || ((object)rhs) == null ? Equals(lhs, rhs) : lhs.Equals(rhs);
 
+#if JHELP
+        /// <summary>
+        /// 非等値演算子
+        /// </summary>
+        /// <param name="lhs">左辺</param>
+        /// <param name="rhs">右辺</param>
+        /// <returns>オペランドが等しくない場合trueを返す</returns>
+#else
+        /// <summary>
+        /// Inequality operator.
+        /// </summary>
+        /// <param name="lhs">Left hand side.</param>
+        /// <param name="rhs">Right hand side.</param>
+        /// <returns>true if its oprands are not equal.</returns>
+#endif
         public static bool operator !=(Judge lhs, Judge rhs) => !(lhs == rhs);
 
     }

@@ -742,8 +742,8 @@ namespace AIWolf.Lib
         /// <summary>
         /// Initializes a new instance of IdentContentBuilder.
         /// </summary>
-        /// <param name="agents">The agent who identified.</param>
-        /// <param name="agents">The agent who was identified.</param>
+        /// <param name="subject">The agent who identified.</param>
+        /// <param name="target">The agent who was identified.</param>
         /// <param name="result">The species of the identified agent.</param>
 #endif
         public IdentContentBuilder(Agent subject, Agent target, Species result)
@@ -793,7 +793,7 @@ namespace AIWolf.Lib
         /// </summary>
         /// <param name="subject">The agent who requests.</param>
         /// <param name="target">The requested agent.</param>
-        /// <param name="content">The requested action.</param>
+        /// <param name="action">The requested action.</param>
 #endif
         public RequestContentBuilder(Agent subject, Agent target, Content action)
         {
@@ -1078,6 +1078,15 @@ namespace AIWolf.Lib
 #endif
     public class SkipContentBuilder : ContentBuilder
     {
+#if JHELP
+        /// <summary>
+        /// SkipContentBuilderクラスの新しいインスタンスを初期化します
+        /// </summary>
+#else
+        /// <summary>
+        /// Initializes a new instance of SkipContentBuilder.
+        /// </summary>
+#endif
         public SkipContentBuilder()
         {
             Topic = Topic.Skip;
@@ -1095,17 +1104,41 @@ namespace AIWolf.Lib
 #endif
     public class OverContentBuilder : ContentBuilder
     {
+#if JHELP
+        /// <summary>
+        /// OverContentBuilderクラスの新しいインスタンスを初期化します
+        /// </summary>
+#else
+        /// <summary>
+        /// Initializes a new instance of OverContentBuilder.
+        /// </summary>
+#endif
         public OverContentBuilder()
         {
             Topic = Topic.Over;
         }
     }
 
+#if JHELP
+    /// <summary>
+    /// Emptyビルダークラス
+    /// </summary>
+#else
     /// <summary>
     /// Builder class for an empty content.
     /// </summary>
+#endif
     public class EmptyContentBuilder : ContentBuilder
     {
+#if JHELP
+        /// <summary>
+        /// EmptyContentBuilderクラスの新しいインスタンスを初期化します
+        /// </summary>
+#else
+        /// <summary>
+        /// Initializes a new instance of EmptyContentBuilder.
+        /// </summary>
+#endif
         public EmptyContentBuilder()
         {
             Topic = Topic.DUMMY;

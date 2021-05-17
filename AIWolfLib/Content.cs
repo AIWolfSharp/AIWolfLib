@@ -24,9 +24,15 @@ namespace AIWolf.Lib
 #endif
     public class Content : IEquatable<Content>
     {
+#if JHELP
+        /// <summary>
+        /// 定数Content.Empty
+        /// </summary>
+#else
         /// <summary>
         /// Constant Content.Empty.
         /// </summary>
+#endif
         public static readonly Content Empty = new Content(new EmptyContentBuilder());
 
 #if JHELP
@@ -523,14 +529,47 @@ namespace AIWolf.Lib
             NormalizeText();
         }
 
+        /// <inheritdoc />
         public bool Equals(Content other) => other != null && (ReferenceEquals(this, other) || other.Text == Text);
 
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is Content content && Equals(content);
 
+        /// <inheritdoc />
         public override int GetHashCode() => Text.GetHashCode();
 
+#if JHELP
+        /// <summary>
+        /// 等値演算子
+        /// </summary>
+        /// <param name="lhs">左辺</param>
+        /// <param name="rhs">右辺</param>
+        /// <returns>オペランドが等しい場合trueを返す</returns>
+#else
+        /// <summary>
+        /// Equality operator.
+        /// </summary>
+        /// <param name="lhs">Left hand side.</param>
+        /// <param name="rhs">Right hand side.</param>
+        /// <returns>true if its oprands are equal.</returns>
+#endif
         public static bool operator ==(Content lhs, Content rhs) => ((object)lhs) == null || ((object)rhs) == null ? Equals(lhs, rhs) : lhs.Equals(rhs);
 
+#if JHELP
+        /// <summary>
+        /// 非等値演算子
+        /// </summary>
+        /// <param name="lhs">左辺</param>
+        /// <param name="rhs">右辺</param>
+        /// <returns>オペランドが等しくない場合trueを返す</returns>
+#else
+        /// <summary>
+        /// Inequality operator.
+        /// </summary>
+        /// <param name="lhs">Left hand side.</param>
+        /// <param name="rhs">Right hand side.</param>
+        /// <returns>true if its oprands are not equal.</returns>
+#endif
         public static bool operator !=(Content lhs, Content rhs) => !(lhs == rhs);
 
     }

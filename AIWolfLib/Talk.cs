@@ -23,9 +23,15 @@ namespace AIWolf.Lib
     [DataContract]
     public class Talk : IUtterance, IEquatable<Talk>
     {
+#if JHELP
+        /// <summary>
+        /// 定数Talk.Empty
+        /// </summary>
+#else
         /// <summary>
         /// Constant Talk.Empty.
         /// </summary>
+#endif
         public static readonly Talk Empty = new Talk(-1, -1, -1, Agent.NONE, string.Empty);
 
 #if JHELP
@@ -156,17 +162,51 @@ namespace AIWolf.Lib
         internal Talk(int idx, int day, int turn, int agent, string text)
             : this(idx, day, turn, Agent.GetAgent(agent), text) { }
 
+        /// <inheritdoc />
         public override string ToString() => $"Talk: Day{Day:D2} {Turn:D2}[{Idx:D3}]\t{Agent}\t{Text}";
 
+        /// <inheritdoc />
         public bool Equals(Talk other) => other != null && (ReferenceEquals(this, other) || GetType() == other.GetType()
                 && other.Idx == Idx && other.Day == Day && other.Turn == Turn && other.Agent == Agent && other.Text == Text);
 
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is Talk talk && Equals(talk);
 
+        /// <inheritdoc />
         public override int GetHashCode() => (UtteranceType.TALK, Idx, Day, Turn, Agent, Text).GetHashCode();
 
+#if JHELP
+        /// <summary>
+        /// 等値演算子
+        /// </summary>
+        /// <param name="lhs">左辺</param>
+        /// <param name="rhs">右辺</param>
+        /// <returns>オペランドが等しい場合trueを返す</returns>
+#else
+        /// <summary>
+        /// Equality operator.
+        /// </summary>
+        /// <param name="lhs">Left hand side.</param>
+        /// <param name="rhs">Right hand side.</param>
+        /// <returns>true if its oprands are equal.</returns>
+#endif
         public static bool operator ==(Talk lhs, Talk rhs) => ((object)lhs) == null || ((object)rhs) == null ? Equals(lhs, rhs) : lhs.Equals(rhs);
 
+#if JHELP
+        /// <summary>
+        /// 非等値演算子
+        /// </summary>
+        /// <param name="lhs">左辺</param>
+        /// <param name="rhs">右辺</param>
+        /// <returns>オペランドが等しくない場合trueを返す</returns>
+#else
+        /// <summary>
+        /// Inequality operator.
+        /// </summary>
+        /// <param name="lhs">Left hand side.</param>
+        /// <param name="rhs">Right hand side.</param>
+        /// <returns>true if its oprands are not equal.</returns>
+#endif
         public static bool operator !=(Talk lhs, Talk rhs) => !(lhs == rhs);
     }
 
@@ -179,11 +219,17 @@ namespace AIWolf.Lib
     /// Whisper class.
     /// </summary>
 #endif
-    public class Whisper : Talk
+    public class Whisper : Talk, IEquatable<Whisper>
     {
+#if JHELP
+        /// <summary>
+        /// 定数Whisper.Empty
+        /// </summary>
+#else
         /// <summary>
         /// Constant Whisper.Empty.
         /// </summary>
+#endif
         public static new readonly Whisper Empty = new Whisper(-1, -1, -1, Agent.NONE, string.Empty);
 
 #if JHELP
@@ -220,17 +266,51 @@ namespace AIWolf.Lib
         Whisper(int idx, int day, int turn, int agent, string text)
             : this(idx, day, turn, Agent.GetAgent(agent), text) { }
 
+        /// <inheritdoc />
         public override string ToString() => $"Whisper: Day{Day:D2} {Turn:D2}[{Idx:D3}]\t{Agent}\t{Text}";
 
+        /// <inheritdoc />
         public bool Equals(Whisper other) => other != null && (ReferenceEquals(this, other) || GetType() == other.GetType()
-        && other.Idx == Idx && other.Day == Day && other.Turn == Turn && other.Agent == Agent && other.Text == Text);
+            && other.Idx == Idx && other.Day == Day && other.Turn == Turn && other.Agent == Agent && other.Text == Text);
 
+        /// <inheritdoc />
         public override bool Equals(object obj) => obj is Whisper whisper && Equals(whisper);
 
+        /// <inheritdoc />
         public override int GetHashCode() => (UtteranceType.WHISPER, Idx, Day, Turn, Agent, Text).GetHashCode();
 
+#if JHELP
+        /// <summary>
+        /// 等値演算子
+        /// </summary>
+        /// <param name="lhs">左辺</param>
+        /// <param name="rhs">右辺</param>
+        /// <returns>オペランドが等しい場合trueを返す</returns>
+#else
+        /// <summary>
+        /// Equality operator.
+        /// </summary>
+        /// <param name="lhs">Left hand side.</param>
+        /// <param name="rhs">Right hand side.</param>
+        /// <returns>true if its oprands are equal.</returns>
+#endif
         public static bool operator ==(Whisper lhs, Whisper rhs) => ((object)lhs) == null || ((object)rhs) == null ? Equals(lhs, rhs) : lhs.Equals(rhs);
 
+#if JHELP
+        /// <summary>
+        /// 非等値演算子
+        /// </summary>
+        /// <param name="lhs">左辺</param>
+        /// <param name="rhs">右辺</param>
+        /// <returns>オペランドが等しくない場合trueを返す</returns>
+#else
+        /// <summary>
+        /// Inequality operator.
+        /// </summary>
+        /// <param name="lhs">Left hand side.</param>
+        /// <param name="rhs">Right hand side.</param>
+        /// <returns>true if its oprands are not equal.</returns>
+#endif
         public static bool operator !=(Whisper lhs, Whisper rhs) => !(lhs == rhs);
 
     }
