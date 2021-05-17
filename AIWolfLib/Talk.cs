@@ -1,10 +1,8 @@
 ﻿//
 // Talk.cs
 //
-// Copyright (c) 2018 Takashi OTSUKI
-//
-// This software is released under the MIT License.
-// http://opensource.org/licenses/mit-license.php
+// Copyright 2018 OTSUKI Takashi
+// SPDX-License-Identifier: Apache-2.0
 //
 
 using Newtonsoft.Json;

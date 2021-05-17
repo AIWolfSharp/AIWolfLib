@@ -1,10 +1,8 @@
 ﻿//
 // ContentBuilder.cs
 //
-// Copyright (c) 2017 Takashi OTSUKI
-//
-// This software is released under the MIT License.
-// http://opensource.org/licenses/mit-license.php
+// Copyright 2017 OTSUKI Takashi
+// SPDX-License-Identifier: Apache-2.0
 //
 
 using System;

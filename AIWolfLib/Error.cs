@@ -1,10 +1,8 @@
 ﻿//
 // Error.cs
 //
-// Copyright (c) 2016 Takashi OTSUKI
-//
-// This software is released under the MIT License.
-// http://opensource.org/licenses/mit-license.php
+// Copyright 2016 OTSUKI Takashi
+// SPDX-License-Identifier: Apache-2.0
 //
 
 using System;
