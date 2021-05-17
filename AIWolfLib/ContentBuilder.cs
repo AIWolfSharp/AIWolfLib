@@ -1100,4 +1100,16 @@ namespace AIWolf.Lib
             Topic = Topic.Over;
         }
     }
+
+    /// <summary>
+    /// Builder class for an empty content.
+    /// </summary>
+    public class EmptyContentBuilder : ContentBuilder
+    {
+        public EmptyContentBuilder()
+        {
+            Topic = Topic.DUMMY;
+        }
+    }
+
 }

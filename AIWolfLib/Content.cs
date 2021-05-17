@@ -24,6 +24,11 @@ namespace AIWolf.Lib
 #endif
     public class Content : IEquatable<Content>
     {
+        /// <summary>
+        /// Constant Content.Empty.
+        /// </summary>
+        public static readonly Content Empty = new Content(new EmptyContentBuilder());
+
 #if JHELP
         /// <summary>
         /// 定数SKIP
@@ -236,6 +241,9 @@ namespace AIWolf.Lib
         {
             switch (Topic)
             {
+                case Topic.DUMMY:
+                    Text = string.Empty;
+                    break;
                 case Topic.Skip:
                     Text = Talk.SKIP;
                     break;
@@ -515,48 +523,16 @@ namespace AIWolf.Lib
             NormalizeText();
         }
 
-#if JHELP
-        /// <summary>
-        /// 発話文字列が等しい場合trueを返す
-        /// </summary>
-        /// <param name="other">比較対象</param>
-        /// <returns>発話文字列が等しい場合true</returns>
-#else
-        /// <summary>
-        /// Returns true if text representation of this content equals that of other.
-        /// </summary>
-        /// <param name="other">Content to compare with this content.</param>
-        /// <returns>true if other equals this in text; otherwise, false.</returns>
-#endif
-        public bool Equals(Content other) => other == null ? false : other.Text == Text;
+        public bool Equals(Content other) => other != null && (ReferenceEquals(this, other) || other.Text == Text);
 
-#if JHELP
-        /// <summary>
-        /// 発話文字列が等しい場合trueを返す
-        /// </summary>
-        /// <param name="obj">比較対象</param>
-        /// <returns>発話文字列が等しい場合true</returns>
-#else
-        /// <summary>
-        /// Returns true if text representation of this content equals that of other.
-        /// </summary>
-        /// <param name="obj">Object to compare with this content.</param>
-        /// <returns>true if other equals this in text; otherwise, false.</returns>
-#endif
-        public override bool Equals(object obj) => obj is Content content ? Equals(content) : false;
+        public override bool Equals(object obj) => obj is Content content && Equals(content);
 
-#if JHELP
-        /// <summary>
-        /// ハッシュ関数
-        /// </summary>
-        /// <returns>ハッシュ値</returns>
-#else
-        /// <summary>
-        /// Hash function.
-        /// </summary>
-        /// <returns>A hash code for the current object.</returns>
-#endif
         public override int GetHashCode() => Text.GetHashCode();
+
+        public static bool operator ==(Content lhs, Content rhs) => ((object)lhs) == null || ((object)rhs) == null ? Equals(lhs, rhs) : lhs.Equals(rhs);
+
+        public static bool operator !=(Content lhs, Content rhs) => !(lhs == rhs);
+
     }
 
 #if JHELP
