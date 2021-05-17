@@ -6,6 +6,7 @@
 //
 
 using Newtonsoft.Json;
+using System;
 using System.Runtime.Serialization;
 
 namespace AIWolf.Lib
@@ -20,8 +21,13 @@ namespace AIWolf.Lib
     /// </summary>
 #endif
     [DataContract]
-    public class Talk : IUtterance
+    public class Talk : IUtterance, IEquatable<Talk>
     {
+        /// <summary>
+        /// Constant Talk.Empty.
+        /// </summary>
+        public static readonly Talk Empty = new Talk(-1, -1, -1, Agent.NONE, string.Empty);
+
 #if JHELP
         /// <summary>
         /// 発話することがない
@@ -150,18 +156,18 @@ namespace AIWolf.Lib
         internal Talk(int idx, int day, int turn, int agent, string text)
             : this(idx, day, turn, Agent.GetAgent(agent), text) { }
 
-#if JHELP
-        /// <summary>
-        /// このオブジェクトを表す文字列を返す
-        /// </summary>
-        /// <returns>このオブジェクトを表す文字列</returns>
-#else
-        /// <summary>
-        /// Returns a string that represents the current object.
-        /// </summary>
-        /// <returns>A string that represents the current object.</returns>
-#endif
         public override string ToString() => $"Talk: Day{Day:D2} {Turn:D2}[{Idx:D3}]\t{Agent}\t{Text}";
+
+        public bool Equals(Talk other) => other != null && (ReferenceEquals(this, other) || GetType() == other.GetType()
+                && other.Idx == Idx && other.Day == Day && other.Turn == Turn && other.Agent == Agent && other.Text == Text);
+
+        public override bool Equals(object obj) => obj is Talk talk && Equals(talk);
+
+        public override int GetHashCode() => (UtteranceType.TALK, Idx, Day, Turn, Agent, Text).GetHashCode();
+
+        public static bool operator ==(Talk lhs, Talk rhs) => ((object)lhs) == null || ((object)rhs) == null ? Equals(lhs, rhs) : lhs.Equals(rhs);
+
+        public static bool operator !=(Talk lhs, Talk rhs) => !(lhs == rhs);
     }
 
 #if JHELP
@@ -175,6 +181,11 @@ namespace AIWolf.Lib
 #endif
     public class Whisper : Talk
     {
+        /// <summary>
+        /// Constant Whisper.Empty.
+        /// </summary>
+        public static new readonly Whisper Empty = new Whisper(-1, -1, -1, Agent.NONE, string.Empty);
+
 #if JHELP
         /// <summary>
         /// 囁きの新しいインスタンスを初期化する
@@ -209,17 +220,18 @@ namespace AIWolf.Lib
         Whisper(int idx, int day, int turn, int agent, string text)
             : this(idx, day, turn, Agent.GetAgent(agent), text) { }
 
-#if JHELP
-        /// <summary>
-        /// このオブジェクトを表す文字列を返す
-        /// </summary>
-        /// <returns>このオブジェクトを表す文字列</returns>
-#else
-        /// <summary>
-        /// Returns a string that represents the current object.
-        /// </summary>
-        /// <returns>A string that represents the current object.</returns>
-#endif
         public override string ToString() => $"Whisper: Day{Day:D2} {Turn:D2}[{Idx:D3}]\t{Agent}\t{Text}";
+
+        public bool Equals(Whisper other) => other != null && (ReferenceEquals(this, other) || GetType() == other.GetType()
+        && other.Idx == Idx && other.Day == Day && other.Turn == Turn && other.Agent == Agent && other.Text == Text);
+
+        public override bool Equals(object obj) => obj is Whisper whisper && Equals(whisper);
+
+        public override int GetHashCode() => (UtteranceType.WHISPER, Idx, Day, Turn, Agent, Text).GetHashCode();
+
+        public static bool operator ==(Whisper lhs, Whisper rhs) => ((object)lhs) == null || ((object)rhs) == null ? Equals(lhs, rhs) : lhs.Equals(rhs);
+
+        public static bool operator !=(Whisper lhs, Whisper rhs) => !(lhs == rhs);
+
     }
 }
