@@ -6,6 +6,7 @@
 //
 
 using Newtonsoft.Json;
+using System;
 using System.Runtime.Serialization;
 
 namespace AIWolf.Lib
@@ -20,8 +21,13 @@ namespace AIWolf.Lib
     /// </summary>
 #endif
     [DataContract]
-    public class Vote
+    public class Vote : IEquatable<Vote>
     {
+        /// <summary>
+        /// Constant Vote.Empty.
+        /// </summary>
+        public static readonly Vote Empty = new Vote(-1, Agent.NONE, Agent.NONE);
+
         /// <summary>
         /// The index number of the agent who voted.
         /// </summary>
@@ -111,17 +117,18 @@ namespace AIWolf.Lib
             Target = Agent.GetAgent(target);
         }
 
-#if JHELP
-        /// <summary>
-        /// このオブジェクトを表す文字列を返す
-        /// </summary>
-        /// <returns>このオブジェクトを表す文字列</returns>
-#else
-        /// <summary>
-        /// Returns a string that represents the current object.
-        /// </summary>
-        /// <returns>A string that represents the current object.</returns>
-#endif
         public override string ToString() => $"{Agent}voted{Target}@{Day}";
+
+        public bool Equals(Vote other) => other != null && (ReferenceEquals(this, other)
+            || GetType() == other.GetType() && other.Day == Day && other.Agent == Agent && other.Target == Target);
+
+        public override bool Equals(object obj) => obj is Vote vote && Equals(vote);
+
+        public override int GetHashCode() => (Day, Agent, Target).GetHashCode();
+
+        public static bool operator ==(Vote lhs, Vote rhs) => ((object)lhs) == null || ((object)rhs) == null ? Equals(lhs, rhs) : lhs.Equals(rhs);
+
+        public static bool operator !=(Vote lhs, Vote rhs) => !(lhs == rhs);
+
     }
 }
