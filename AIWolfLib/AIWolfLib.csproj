@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>The AIWolf library.</Description>
+    <Copyright>Copyright © 2017 Takashi OTSUKI</Copyright>
+    <Company>AIWolfSharp</Company>
+    <Authors>Takashi OTSUKI</Authors>
+    <RootNamespace>AIWolf.Lib</RootNamespace>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>2.0.1</Version>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+    <DefineConstants>TRACE;DEBUG;JHELP</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;JHELP</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
