@@ -1,4 +1,5 @@
-﻿* 1.0.0: 最初のリリース
+﻿[View in English](README.md)
+* 1.0.0: 最初のリリース
 * 1.1.0: ゲームサーバが加わり.NET版だけで完結するようになったのに伴い，
 名称を「ライブラリ」から「プラットフォーム」に変えました．
   * ゲームサーバが加わりました．
@@ -48,3 +49,15 @@
     * 既存のContentBuilderに主語を指定可能な新規コンストラクタ（既存のコンストラクタは非推奨）
   * このバージョンからサンプルプレイヤーは含まれません．
 * 2.0.1: Contentクラスのバグフィックス
+* 2.1.0: 従来のAIWolf.NETリポジトリをAIWolfLib, AIWolfServer, ClientStarterの3リポジトリに分割
+  * ライセンスをMITからApache 2.0に変更
+  * ターゲットフレームワークを.NET Standard 2.1に変更
+  * Contentクラスにnullの代わりに使える定数`Content.Empty`，等値演算子と非等値演算子を実装
+  * Judgeクラスにnullの代わりに使える定数`Judge.Empty`, `IEquatable<Judge>`インターフェース，
+    等値演算子と非等値演算子を実装
+  * Talkクラスにnullの代わりに使える定数`Talk.Empty`, `IEquatable<Talk>`インターフェース，
+    等値演算子と非等値演算子を実装
+  * Whisperクラスにnullの代わりに使える定数`Whisper.Empty`, `IEquatable<Whisper>`インターフェース，
+    等値演算子と非等値演算子を実装
+  * Voteクラスにnullの代わりに使える定数`Vote.Empty`, `IEquatable<Vote>`インターフェース，
+    等値演算子と非等値演算子を実装

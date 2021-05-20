@@ -1,6 +1,6 @@
 [View in Japanese](README-J.md)
-# AIWolf.NET
-## .NET version of AIWolf platform
+# AIWolfLib
+## Library for .NET AIWolf agent
 
 1. TUTORIALS
 
@@ -8,21 +8,11 @@
 
 1. DOWNLOADS
 
-    * ClientStarter with runtime:
-      * [Linux 64bit](https://github.com/AIWolfSharp/AIWolf_NET/releases/download/v2.0.1/ClientStarter-2.0.1-linux-x64.tgz)
-      * [macOS 64bit](https://github.com/AIWolfSharp/AIWolf_NET/releases/download/v2.0.1/ClientStarter-2.0.1-osx-x64.zip)
-      * [Windows 64bit](https://github.com/AIWolfSharp/AIWolf_NET/releases/download/v2.0.1/ClientStarter-2.0.1-win-x64.zip)
-      * [Windows 32bit](https://github.com/AIWolfSharp/AIWolf_NET/releases/download/v2.0.1/ClientStarter-2.0.1-win-x86.zip)
     * [Reference manual](https://github.com/AIWolfSharp/AIWolf_NET/releases/download/v2.0.0/AIWolf_NET_2.0.0_ReferenceManual_E.zip)
 
 1. HISTORY and [CHANGES](CHANGES.md)
 
-    * 1.0.0: The first release of library version.
-    * 1.1.0: The first release of platform version including game server.
-    * 2.0.0: 
-      * We change some APIs from version 1.
-      * We make this version compatible with the AIWolf protocol version 3.
-    * 2.0.1: Bugfixes in Content class. 
+    * 2.1.0: Separated from [AIWolf.NET](https://github.com/AIWolfSharp/AIWolf_NET/) repository.
 
 ---
-This software is released under the MIT License, see [LICENSE](LICENSE.md).
+This software is licensed under the Apache License, Version 2.0, see [LICENSE](LICENSE.md).

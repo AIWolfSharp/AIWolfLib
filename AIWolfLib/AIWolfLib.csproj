@@ -8,7 +8,7 @@
     <Authors>Takashi OTSUKI</Authors>
     <RootNamespace>AIWolf.Lib</RootNamespace>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>2.1.0-beta</Version>
+    <Version>2.1.0</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>

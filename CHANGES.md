@@ -1,3 +1,4 @@
+[View in Japanese](CHANGES-J.md)
 * 1.0.0: The first release of library version.
 * 1.1.0: The first release of platform version including game server.
   * Now we have a game server library and the server starter.
@@ -52,3 +53,17 @@ regardless of their kind such as Java, .NET, Python, etc.
       and make the existing constructors obsolete.
   * Sample player is not included in this version.
 * 2.0.1: Bugfixes in Content class.
+* 2.1.0: AIWolf.NET repository has been separated into three repositories:
+  AIWolfLib, AIWolfServer, and ClientStarter.
+  * Change license from MIT to Apache 2.0.
+  * Change target framework to .NET Standard 2.1.
+  * In Content class, implement constant `Content.Empty` that can be used instead of null,
+    equality operator, and inequality operator.
+  * In Judge class, implement constant `Judge.Empty` that can be used instead of null,
+    `IEquatable<Judge>` interface, equality operator, and inequality operator.
+  * In Talk class, implement constant `Talk.Empty` that can be used instead of null,
+    `IEquatable<Talk>` interface, equality operator, and inequality operator.
+  * In Whisper class, implement constant `Whisper.Empty` that can be used instead of null,
+    `IEquatable<Whisper>` interface, equality operator, and inequality operator.
+  * In Vote class, implement constant `Vote.Empty` that can be used instead of null,
+    `IEquatable<Vote>` interface, equality operator, and inequality operator.
