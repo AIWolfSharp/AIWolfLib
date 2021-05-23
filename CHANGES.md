@@ -57,6 +57,7 @@ regardless of their kind such as Java, .NET, Python, etc.
   AIWolfLib, AIWolfServer, and ClientStarter.
   * Change license from MIT to Apache 2.0.
   * Change target framework to .NET Standard 2.1.
+  * Make methods that return an Agent return Agent.NONE instead of null.
   * In Content class, implement constant `Content.Empty` that can be used instead of null,
     equality operator, and inequality operator.
   * In Judge class, implement constant `Judge.Empty` that can be used instead of null,

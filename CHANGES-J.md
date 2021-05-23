@@ -52,6 +52,7 @@
 * 2.1.0: 従来のAIWolf.NETリポジトリをAIWolfLib, AIWolfServer, ClientStarterの3リポジトリに分割
   * ライセンスをMITからApache 2.0に変更
   * ターゲットフレームワークを.NET Standard 2.1に変更
+  * IPlayerのAgentを返すメソッドが，nullの代わりにAgent.NONEを返せるようにしました．
   * Contentクラスにnullの代わりに使える定数`Content.Empty`，等値演算子と非等値演算子を実装
   * Judgeクラスにnullの代わりに使える定数`Judge.Empty`, `IEquatable<Judge>`インターフェース，
     等値演算子と非等値演算子を実装
