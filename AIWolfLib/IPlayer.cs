@@ -75,7 +75,7 @@ namespace AIWolf.Lib
         /// </summary>
         /// <returns>発言の文字列</returns>
         /// <remarks>
-        /// nullはSkipを意味する
+        /// nullあるいはstring.EmptyはSkipを意味する
         /// </remarks>
 #else
         /// <summary>
@@ -83,7 +83,7 @@ namespace AIWolf.Lib
         /// </summary>
         /// <returns>The string representing this player's talk.</returns>
         /// <remarks>
-        /// Null means Skip.
+        /// null or string.Empty means Skip.
         /// </remarks>
 #endif
         string Talk();
@@ -94,7 +94,7 @@ namespace AIWolf.Lib
         /// </summary>
         /// <returns>囁きの文字列</returns>
         /// <remarks>
-        /// nullはSkipを意味する
+        /// nullあるいはstring.EmptyはSkipを意味する
         /// </remarks>
 #else
         /// <summary>
@@ -102,7 +102,7 @@ namespace AIWolf.Lib
         /// </summary>
         /// <returns>The string representing this werewolf's whisper.</returns>
         /// <remarks>
-        /// Null means Skip.
+        /// null or string.Empty means Skip.
         /// </remarks>
 #endif
         string Whisper();
@@ -112,13 +112,13 @@ namespace AIWolf.Lib
         /// このプレイヤーが追放したいエージェントを返す
         /// </summary>
         /// <returns>このプレイヤーが追放したいエージェント</returns>
-        /// <remarks>nullを返した場合エージェントはランダムに決められる</remarks>
+        /// <remarks>nullあるいはAgent.NONEを返した場合エージェントはランダムに決められる</remarks>
 #else
         /// <summary>
         /// Returns the agent this player wants to execute.
         /// </summary>
         /// <returns>The agent this player wants to execute.</returns>
-        /// <remarks>Null results in random vote.</remarks>
+        /// <remarks>null or Agent.NONE results in random vote.</remarks>
 #endif
         Agent Vote();
 
@@ -127,13 +127,13 @@ namespace AIWolf.Lib
         /// この人狼が襲撃したいエージェントを返す
         /// </summary>
         /// <returns>この人狼が襲撃したいエージェント</returns>
-        /// <remarks>nullは襲撃なしを意味する</remarks>
+        /// <remarks>nullあるいはAgent.NONEは襲撃なしを意味する</remarks>
 #else
         /// <summary>
         /// Returns the agent this werewolf wants to attack.
         /// </summary>
         /// <returns>The agent this werewolf wants to attack.</returns>
-        /// <remarks>No attack in case of null.</remarks>
+        /// <remarks>No attack in case of null or Agent.NONE.</remarks>
 #endif
         Agent Attack();
 
@@ -142,13 +142,13 @@ namespace AIWolf.Lib
         /// この占い師が占いたいエージェントを返す
         /// </summary>
         /// <returns>この占い師が占いたいエージェント</returns>
-        /// <remarks>nullは占いなしを意味する</remarks>
+        /// <remarks>nullあるいはAgent.NONEは占いなしを意味する</remarks>
 #else
         /// <summary>
         /// Returns the agent this seer wants to divine.
         /// </summary>
         /// <returns>The agent this seer wants to divine.</returns>
-        /// <remarks>No divination in case of null.</remarks>
+        /// <remarks>No divination in case of null or Agent.NONE.</remarks>
 #endif
         Agent Divine();
 
@@ -157,13 +157,13 @@ namespace AIWolf.Lib
         /// この狩人が護衛したいエージェントを返す
         /// </summary>
         /// <returns>この狩人が護衛したいエージェント</returns>
-        /// <remarks>nullは護衛なしを意味する</remarks>
+        /// <remarks>nullあるいはAgent.NONEは護衛なしを意味する</remarks>
 #else
         /// <summary>
         /// Returns the agent this bodyguard wants to guard.
         /// </summary>
         /// <returns>The agent this bodyguard wants to guard.</returns>
-        /// <remarks>No guard in case of null.</remarks>
+        /// <remarks>No guard in case of null or Agent.NONE.</remarks>
 #endif
         Agent Guard();
 
