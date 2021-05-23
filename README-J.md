@@ -8,7 +8,7 @@
 
 1. ダウンロード
 
-    * [Reference manual](https://github.com/AIWolfSharp/AIWolfLib/raw/e3dc7c1547b6b4b027a383b4c02cd7156c3f0c94/AIWolfLib-2.1.0-ReferenceManual-J.zip)
+    * [Reference manual](https://github.com/AIWolfSharp/AIWolfLib/raw/97867390eced3a5bc42f6168a3963bf944e6a40c/AIWolfLib-2.1.0-ReferenceManual-J.zip)
 
 1. 履歴と[変更点](CHANGES-J.md)
 
